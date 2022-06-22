@@ -8,19 +8,16 @@ const initial_todos = [
   {
     title: "Buy a coffee",
     completed: false,
-    canEdit: true,
     id: uuid(),
   },
   {
     title: "Read a book",
     completed: true,
-    canEdit: true,
     id: uuid(),
   },
   {
     title: "Rest of react tutorial",
     completed: false,
-    canEdit: true,
     id: uuid(),
   },
 ];
@@ -28,7 +25,8 @@ const initial_todos = [
 const TodoContextProvider = (props) => {
   const [todos, dispatch] = useReducer(todoReducer, initial_todos);
   const [filteredTodos, setFilteredTodos] = useState(todos);
-  const [filterOption, setFilterOption] = useState('all')
+  const [filterOption, setFilterOption] = useState('all');
+  
   useEffect(() => {
     setFilteredTodos(todos)
   }, [todos]);

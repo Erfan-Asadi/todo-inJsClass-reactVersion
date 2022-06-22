@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { todoContext } from '../contexts/TodoContext';
 
-
+// const click_sound = new Audio("../../public/click-audio.mp3");
+import click from '../click-audio.mp3'
 const FormTag = styled.form`
     position: relative;
     display: flex;
@@ -81,21 +82,33 @@ const FormToggler = styled.button`
 `;
 
 const Form = () => {
-  const [isExpand, setIsExpand] = useState(false);
-  const {dispatch} = useContext(todoContext);
-  const [inputValue, setInputValue] = useState('');
+    const [isExpand, setIsExpand] = useState(false);
+    const {
+      dispatch
+    } = useContext(todoContext);
+    const [inputValue, setInputValue] = useState('');
 
-  function handleSubmit(e) {
-    e.preventDefault();
+    let isPlay = useRef(false);
 
-    if(inputValue !== '') {
-      dispatch({
-        type: 'ADD_TODO',
-        payload: inputValue
-      })
-      setInputValue('');
+    useEffect(() => {
+      if (isPlay.current) {
+        new Audio(click).play();
+      } else {
+        isPlay.current = true;
+      }
+    }, [isExpand])
+
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      if (inputValue !== '') {
+        dispatch({
+          type: 'ADD_TODO',
+          payload: inputValue
+        })
+        setInputValue('');
+      }
     }
-  }
 
 
   return (

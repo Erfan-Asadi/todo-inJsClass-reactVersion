@@ -27,8 +27,6 @@ export const todoReducer = (state, action) => {
                 return todoItem
             })
             return updated_state;
-    //    case 'EDIT_TODO':
-    //        return state;
        default:
            return state;
    }

@@ -128,7 +128,6 @@ const TodoItem = ({todo}) => {
                         <i className="fa fa-chevron-right"></i>
                         <div className={`todo-options ${expandedTodo && 'expand'}`}>
                             <i className="fa fa-times remove-todo" onClick={removeTodoHandler}></i>
-                            <i className="fa fa-pen edit-todo"></i>
                         </div>
                     </div>
         </TodoLi>
