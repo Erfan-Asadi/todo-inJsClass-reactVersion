@@ -110,6 +110,12 @@ const TodoItem = ({todo}) => {
             setExpandedTodo(prev => !prev)
         }
     }
+    function removeTodoHandler() {
+        dispatch({
+            type: 'REMOVE_TODO',
+            payload: todo.id
+        })
+    }
 
 
    return (
@@ -121,7 +127,7 @@ const TodoItem = ({todo}) => {
                     <div className="container-right" onClick={toggleOptions}>
                         <i className="fa fa-chevron-right"></i>
                         <div className={`todo-options ${expandedTodo && 'expand'}`}>
-                            <i className="fa fa-times remove-todo"></i>
+                            <i className="fa fa-times remove-todo" onClick={removeTodoHandler}></i>
                             <i className="fa fa-pen edit-todo"></i>
                         </div>
                     </div>

@@ -28,13 +28,30 @@ const initial_todos = [
 const TodoContextProvider = (props) => {
   const [todos, dispatch] = useReducer(todoReducer, initial_todos);
   const [filteredTodos, setFilteredTodos] = useState(todos);
-
+  const [filterOption, setFilterOption] = useState('all')
   useEffect(() => {
     setFilteredTodos(todos)
   }, [todos]);
+
+  function handlerFilteTodos() {
+      switch(filterOption) {
+        case 'completed':
+          const completedTodos = todos.filter(todo => todo.completed);
+          setFilteredTodos(completedTodos);
+          break;
+        case 'uncompleted':
+          const unCompletedTodos = todos.filter(todo => !todo.completed);
+          setFilteredTodos(unCompletedTodos);
+          break;
+        default: 
+          setFilteredTodos(todos)
+      }
+  }
+  // eslint-disable-next-line
+  useEffect(handlerFilteTodos, [filterOption])
   
   return (
-    <todoContext.Provider value={{ filteredTodos, dispatch, setFilteredTodos }}>
+    <todoContext.Provider value={{ filteredTodos, dispatch, setFilterOption, todos }}>
       {props.children}
     </todoContext.Provider>
   );

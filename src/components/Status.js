@@ -41,8 +41,8 @@ const StatusTag = styled.div `
   }
 `;
 const Status = () => {
-  const {filteredTodos} = useContext(todoContext);
-  const completedTodos = filteredTodos.filter(todo => todo.completed );
+  const {todos} = useContext(todoContext);
+  const completedTodos = todos.filter(todo => todo.completed );
 
   return (
     <StatusTag>
@@ -50,7 +50,7 @@ const Status = () => {
             <div>
                 <h2 className="completed-task-count">{completedTodos.length}</h2>
                 <h3 className="title">Tasks</h3>
-                <h3 className="all-tasks-count">/ {filteredTodos.length}</h3>
+                <h3 className="all-tasks-count">/ {todos.length}</h3>
             </div>
             
         </div>
