@@ -1,2 +1,4 @@
 # todo-inJsClass-reactVersion
-a react version of <a>todo-with-erfan.netlify.app</a>
+see live Demo: https://todo-with-erfan-react.netlify.app/
+
+see pure js version: https://todo-with-erfan.netlify.app/
